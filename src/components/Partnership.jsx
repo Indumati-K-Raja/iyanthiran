@@ -89,6 +89,7 @@ function Partnership() {
             height: '100%',
             objectFit: 'cover',
             zIndex: 0,
+            backgroundColor: 'white',
             borderRadius: '12px',
           }}
         />
@@ -285,6 +286,7 @@ function Partnership() {
               alt="Join the Movement"
               style={{
                 width: '100%',
+                 backgroundColor: 'white',
                 borderRadius: '16px',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
                 objectFit: 'cover',
