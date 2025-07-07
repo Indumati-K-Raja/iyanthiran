@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import partnerImg from '../assets/img/PartWidUs.png'; // ✅ Make sure this exists
+
 
 function Partnership() {
   const sectionRef = useRef(null);
@@ -76,7 +76,7 @@ function Partnership() {
         }}
       >
         <motion.img
-          src={partnerImg}
+          src="/images/PartWidUs.png"
           alt="Why Partner"
           initial={{ opacity: 1 }}
           animate={sectionInView ? { opacity: 0 } : { opacity: 1 }}
@@ -205,46 +205,46 @@ function Partnership() {
         </div>
 
          {/* Partner Promise Section */}
-<motion.div
-  ref={promiseRef}
-  initial={{ opacity: 0, y: 50 }}
-  animate={promiseInView ? { opacity: 1, y: 0 } : {}}
-  transition={{ duration: 0.8, ease: 'easeOut' }}
-  style={{
-    backgroundColor: '#C9F7F6',
-    marginTop: '3rem',
-    padding: '2.5rem 2rem',
-    borderRadius: '12px',
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-    textAlign: 'center',
-    maxWidth: '900px',
-    marginInline: 'auto',
-  }}
->
-  <h3 style={{ color: '#07839a', marginBottom: '1rem', fontSize: '1.6rem' }}>
-    Our Partner Promise
-  </h3>
-  <ul
-    style={{
-      listStyleType: 'disc',
-      listStylePosition: 'inside',
-      lineHeight: '2',
-      color: '#003942',
-      fontSize: '1rem',
-      fontWeight: '500',
-      padding: 0,
-      margin: 0,
-    }}
-  >
-    <li>Transparent, outcome-driven collaboration.</li>
-    <li>High-quality training and career guidance.</li>
-    <li>Strategic support in developing industry-ready professionals.</li>
-    <li>End-to-end HR services to ensure hiring success.</li>
-  </ul>
-  <p style={{ marginTop: '1.5rem', fontWeight: 'bold', color: '#003942' }}>
-    Together, let’s build a better, brighter future.
-  </p>
-</motion.div>
+            <motion.div
+              ref={promiseRef}
+              initial={{ opacity: 0, y: 50 }}
+              animate={promiseInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              style={{
+                backgroundColor: '#C9F7F6',
+                marginTop: '3rem',
+                padding: '2.5rem 2rem',
+                borderRadius: '12px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
+                textAlign: 'center',
+                maxWidth: '900px',
+                marginInline: 'auto',
+              }}
+            >
+              <h3 style={{ color: '#07839a', marginBottom: '1rem', fontSize: '1.6rem' }}>
+                Our Partner Promise
+              </h3>
+              <ul
+                style={{
+                  listStyleType: 'disc',
+                  listStylePosition: 'inside',
+                  lineHeight: '2',
+                  color: '#003942',
+                  fontSize: '1rem',
+                  fontWeight: '500',
+                  padding: 0,
+                  margin: 0,
+                }}
+              >
+                <li>Transparent, outcome-driven collaboration.</li>
+                <li>High-quality training and career guidance.</li>
+                <li>Strategic support in developing industry-ready professionals.</li>
+                <li>End-to-end HR services to ensure hiring success.</li>
+              </ul>
+              <p style={{ marginTop: '1.5rem', fontWeight: 'bold', color: '#003942' }}>
+                Together, let’s build a better, brighter future.
+              </p>
+            </motion.div>
 
       </section>
 
@@ -281,7 +281,7 @@ function Partnership() {
             style={{ flex: '1 1 400px' }}
           >
             <img
-              src="src/assets/img/business partner.jpeg"
+              src="/images/PartWidUs.png"
               alt="Join the Movement"
               style={{
                 width: '100%',
