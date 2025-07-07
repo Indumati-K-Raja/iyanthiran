@@ -1,0 +1,54 @@
+/* Hero Section */
+.hero {
+  background: linear-gradient(to bottom right, #5dd3c6, #278da0);
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Subscribe box */
+.subscribe-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.subscribe-box input[type="email"] {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+  max-width: 100%;
+}
+
+.subscribe-box button {
+  padding: 0.75rem 1.5rem;
+  background-color: #003942;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-box button:hover {
+  background-color: #006778;
+}
