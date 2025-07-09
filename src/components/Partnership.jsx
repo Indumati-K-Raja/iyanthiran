@@ -282,7 +282,7 @@ function Partnership() {
             style={{ flex: '1 1 400px' }}
           >
             <img
-              src="/images/PartWidUs.png"
+              src="/images/business partner.jpeg"
               alt="Join the Movement"
               style={{
                 width: '100%',
