@@ -155,9 +155,60 @@ export default function AboutUs() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            style={{ flex: '1 1 340px', minWidth: 300 }}
+            style={{
+              flex: '1 1 340px',
+              minWidth: 300,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              background: 'linear-gradient(135deg, #f8fafc 60%, #e3e6fa 100%)',
+              borderRadius: '2.2rem',
+              boxShadow: '0 8px 32px #b85c3811',
+              padding: '2.2rem 1.2rem',
+              marginRight: '0.5rem',
+              marginTop: '-7.20rem',
+            }}
           >
-            <img src="/images/ab3.jpg" alt="Who We Are" style={{ width: '100%', maxWidth: 340, borderRadius: '18px', boxShadow: '0 8px 32px #1976d222', objectFit: 'cover' }} />
+            <motion.img
+              src="/images/mis.jpg"
+              alt="Mission"
+              whileHover={{ scale: 1.045, boxShadow: '0 8px 32px #1976d299' }}
+              transition={{ duration: 0.25 }}
+              style={{
+                width: '100%',
+                height: '250px',
+                maxWidth: 320,
+                borderRadius: '18px',
+                boxShadow: '0 8px 32px #1976d222, 0 0 0 4px #fff',
+                objectFit: 'cover',
+                marginRight:'5rem',
+                marginBottom: '0rem',
+                zIndex: 2,
+                border: '2.5px solid #fff',
+                position: 'relative',
+              }}
+            />
+            <motion.img
+              src="/images/ab3.jpg"
+              alt="Who We Are"
+              whileHover={{ scale: 1.045, boxShadow: '0 8px 32px #b85c3899' }}
+              transition={{ duration: 0.25 }}
+              style={{
+                width: '100%',
+                height: '250px',
+                maxWidth: 320,
+                borderRadius: '18px',
+                boxShadow: '0 8px 32px #b85c3822, 0 0 0 4px #fff',
+                objectFit: 'cover',
+                marginTop: '2 rem',
+                zIndex: 1,
+                border: '2.5px solid #fff',
+                position: 'relative',
+              }}
+            />
           </motion.div>
           {/* Right: Who We Are and What We Do */}
           <motion.div
