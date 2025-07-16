@@ -70,7 +70,7 @@ const Footer = () => {
           <Link to="/courses" style={{ color: '#fff', textDecoration: 'none' }}>Courses</Link>
           <Link to="/partnership" style={{ color: '#fff', textDecoration: 'none' }}>Partner with us</Link>
           <Link to="/contactus" style={{ color: '#fff', textDecoration: 'none' }}>Contact us</Link>
-          <Link to="/faqs" style={{ color: '#fff', textDecoration: 'none' }}>FAQ</Link>
+          <Link to="/contactus" style={{ color: '#fff', textDecoration: 'none' }}>FAQ</Link>
           <Link to="/events" style={{ color: '#fff', textDecoration: 'none' }}>Event&Gallery</Link>
           <Link to="/careerinsightsblog" style={{ color: '#fff', textDecoration: 'none' }}>Blog</Link>
           <Link to="/aboutus" style={{ color: '#fff', textDecoration: 'none' }}>About Us</Link>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaCheckCircle, FaMapSigns, FaUserGraduate, FaComments, FaRocket, FaUserTie, FaStar, FaNetworkWired, FaUserTie as FaPersonalBrand, FaBriefcase } from 'react-icons/fa';
 import HeroSection from './HeroSection';
 import { motion, useAnimation } from "framer-motion";
 import "./CareerInsightsBlog.css";  
@@ -8,6 +9,7 @@ function CareerInsightsBlog() {
     {
       title: 'Career Guidance: Your Roadmap to Success',
       image: '/images/roadmap.png',
+      icon: <FaMapSigns style={{ color: '#1976d2', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
       points: [
         'Identify your strengths and interests.',
         'Explore industry trends and future job opportunities.',
@@ -19,6 +21,7 @@ function CareerInsightsBlog() {
     {
       title: 'Skills Development: The Power of a Strong Skillset',
       image: '/images/skilldev.png',
+      icon: <FaUserGraduate style={{ color: '#43a047', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
       points: [
         'Soft skills like public speaking and team leadership.',
         'Domain-specific knowledge in IT, Science, Arts, and Business.',
@@ -29,6 +32,7 @@ function CareerInsightsBlog() {
     {
       title: 'Interview Preparation: Clearing the Final Step',
       image: '/images/inter.png',
+      icon: <FaComments style={{ color: '#0288d1', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
       points: [
         'Resume building and LinkedIn profile optimization.',
         'Mock interviews with industry experts.',
@@ -40,6 +44,7 @@ function CareerInsightsBlog() {
     {
       title: 'Placement Strategies: Turning Effort Into Offers',
       image: '/images/place.png',
+      icon: <FaRocket style={{ color: '#fbc02d', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
       points: [
         'Aptitude training.',
         'Campus-to-corporate transition sessions.',
@@ -51,6 +56,7 @@ function CareerInsightsBlog() {
     {
       title: 'HR Services for Students and Colleges',
       image: '/images/hrser.png',
+      icon: <FaUserTie style={{ color: '#8e24aa', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
       points: [
         'Custom training modules for colleges.',
         'Campus recruitment partnerships.',
@@ -59,8 +65,45 @@ function CareerInsightsBlog() {
       tip: 'Institutions: We help strengthen placement records with job-ready students.'
     },
     {
+      title: 'Networking Essentials: Building Connections That Count',
+      image: '/images/network.png',
+      icon: <FaNetworkWired style={{ color: '#ff6b35', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
+      points: [
+        'Learn how to grow a professional network both online and offline.',
+        'Attend webinars, career fairs, and industry-specific events.',
+        'Engage meaningfully on platforms like LinkedIn and GitHub.',
+        'Collaborate on open-source or community-driven projects.'
+      ],
+      tip: 'Pro Tip: A strong network can open doors that qualifications alone can\'t.'
+    },
+    {
+      title: 'Personal Branding: Stand Out in a Competitive Market',
+      image: '/images/branding.png',
+      icon: <FaPersonalBrand style={{ color: '#6a4c93', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
+      points: [
+        'Craft a compelling personal story and elevator pitch.',
+        'Build a consistent online presence across platforms.',
+        'Create a personal portfolio or blog to showcase your expertise.',
+        'Stay active with thought leadership posts and community contributions.'
+      ],
+      tip: 'Tip: Your personal brand should reflect your values, strengths, and potential.'
+    },
+    {
+      title: 'Workplace Readiness: Succeeding Beyond the Offer Letter',
+      image: '/images/workplace.png',
+      icon: <FaBriefcase style={{ color: '#19857b', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
+      points: [
+        'Develop emotional intelligence and time management skills.',
+        'Learn workplace etiquette and professional communication.',
+        'Understand goal-setting and performance tracking methods.',
+        'Embrace feedback and cultivate a growth mindset.'
+      ],
+      tip: 'Fact: Adapting quickly to work culture increases early career success.'
+    },
+    {
       title: 'Your Career Journey Starts Here',
       image: '/images/stars.png',
+      icon: <FaStar style={{ color: '#ffb300', fontSize: '1.3em', marginRight: '0.5rem' }} />, 
       points: [
         'Customized career guidance.',
         'Proven placement strategies.',
@@ -94,9 +137,8 @@ function CareerInsightsBlog() {
 
       {/* Blog Section */}
       <motion.section
-        className="career-blog-section advanced-blog-section"
-        style={{ padding: '2.5rem 0', background: 'linear-gradient(to right,rgb(255, 255, 255),rgb(207, 248, 253))',
- minHeight: '100vh' }}
+        className="deck-blog-section"
+        style={{ padding: '1rem 0', background: '#fefcff', minHeight: '100vh' }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -104,134 +146,212 @@ function CareerInsightsBlog() {
           hidden: {},
           visible: {
             transition: {
-              staggerChildren: 0.15
+              staggerChildren: 0.13
             }
           }
         }}
       >
         <motion.h2
           className="blog-section-title"
-          style={{ marginBottom: '2.5rem', fontFamily: 'Merriweather, serif', fontWeight: 700, fontSize: '2.4rem', color: '#00695c', letterSpacing: '0.03em', textAlign: 'center' }}
+          style={{ marginBottom: '0.5rem', fontFamily: 'Merriweather, serif', fontWeight: 700, fontSize: '2.4rem', color: '#222', letterSpacing: '0.03em', textAlign: 'center' }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.1, type: 'spring', stiffness: 120 }}
         >
           Blog & Insights
         </motion.h2>
+        <motion.p
+          style={{ 
+            fontSize: '1.1rem', 
+            maxWidth: '800px', 
+            margin: '0 auto 2.5rem auto', 
+            color: '#666', 
+            textAlign: 'center',
+            lineHeight: 1.6,
+            fontFamily: 'Inter, Lato, sans-serif'
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          Your career journey is unique — and we're here to guide you through it. Whether you're choosing your first path, switching gears, or leveling up, this space brings you practical advice, real stories, and expert insights to help you grow with clarity and confidence. Let's navigate the world of work, together.
+        </motion.p>
 
-        <div
-          className="blog-grid"
+        {/* Custom 3x3 grid using blogData content */}
+        <motion.div
+          className="deck-blog-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '2.5rem',
-            maxWidth: '1200px',
+            gridTemplateColumns: 'repeat(3, minmax(320px, 1fr))',
+            gap: '2.2rem',
+            maxWidth: '1400px', // wider grid
             margin: '0 auto',
             alignItems: 'stretch',
             position: 'relative',
-            padding: '0 1.5rem'
+            padding: '0 1.5rem', // more horizontal padding
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+              }
+            }
           }}
         >
-          {blogData.map((item, idx) => {
-            const imgControls = useAnimation();
+          {[...Array(9)].map((_, idx) => {
+            const item = blogData[idx % blogData.length];
+            // Color palette from the reference image
+            const bgColors = [
+              '#4a2c2a', // deep red
+              '#e6e7e2', // muted green/gray
+              '#4a425e', // purple
+              '#f5f3ef', // off-white
+              '#23231a', // dark brown
+              '#e6e7e2', // muted green/gray
+              '#2d2e32', // dark blue/gray
+              '#f5f3ef', // off-white
+              '#232f34', // dark blue
+            ];
+            const color = bgColors[idx % bgColors.length];
+            const isDark = ['#4a2c2a', '#4a425e', '#23231a', '#2d2e32', '#232f34'].includes(color);
+            const titleColor = isDark ? '#fff' : '#222';
+            const textColor = isDark ? '#e6e7e2' : '#444';
+            
+            // Determine if this is in the top row (first 3 cards)
+            const isTopRow = idx < 3;
+            
             return (
-              <motion.div
-                key={idx}
-                className="advanced-blog-card-wrapper"
+            <motion.div
+              key={idx}
+                className="deck-blog-card"
+                initial={isTopRow ? { opacity: 0, y: 100, scale: 0.8 } : { opacity: 0, y: 60, scale: 0.9, rotateX: -15 }}
+                whileInView={isTopRow ? "visible" : "visible"}
+                viewport={{ once: true, amount: 0.3 }}
                 variants={{
-                  hidden: { opacity: 0, y: 60, scale: 0.92 },
-                  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: 'anticipate' } }
+                  hidden: { 
+                    opacity: 0, 
+                    y: 60, 
+                    scale: 0.9,
+                    rotateX: -15
+                  },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    rotateX: 0,
+                    transition: { 
+                      duration: 0.8, 
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                      delay: isTopRow ? idx * 0.2 : 0
+                    } 
+                  }
                 }}
                 whileHover={{
-                  y: -16,
-                  scale: 1.04,
-                  boxShadow: '0 12px 36px 0 rgba(0, 105, 92, 0.18)',
-                  transition: { type: 'spring', stiffness: 300, damping: 18 }
+                  scale: 1.03,
+                  y: -8,
+                  transition: { 
+                    type: 'spring', 
+                    stiffness: 400, 
+                    damping: 25,
+                    duration: 0.3
+                  }
                 }}
-                onHoverStart={() => imgControls.start({ scale: 1.13, rotate: 2 })}
-                onHoverEnd={() => imgControls.start({ scale: 1, rotate: 0 })}
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '100%',
-                  zIndex: 1,
-                  borderRadius: '28px',
-                  overflow: 'visible',
-                  background: 'none',
+                whileTap={{
+                  scale: 0.98,
+                  transition: { duration: 0.1 }
+                }}
+              style={{
+                  background: color,
+                  borderRadius: 0,
                   boxShadow: 'none',
-                  transition: 'box-shadow 0.3s cubic-bezier(.4,2,.6,1)  #00695c;'
+                  padding: '2.2rem 2.5rem', // more horizontal padding
+                  minHeight: '220px', // less tall
+                  minWidth: '320px', // ensure not too narrow
+                  width: '100%',
+                  display: 'flex',
+                    flexDirection: 'column',
+                  alignItems: 'flex-start',
+                    justifyContent: 'flex-start',
+                  position: 'relative',
+                  overflow: 'visible', // allow content to grow
+                  flexGrow: 1,
+                  transformStyle: 'preserve-3d',
+                  perspective: '1000px'
                 }}
               >
-                {/* Floating/Overlapping Image */}
-                <motion.div
-                  className="blog-float-image"
-                  style={{
-                    position: 'absolute',
-                    top: '-54px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    zIndex: 1,
-                    width: '120px',
-                    height: '120px',
-                    borderRadius: '50%',
-                    boxShadow: '0 6px 32px rgba(0,105,92,0.13)',
-                    background: ' #00695c;',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    overflow: 'hidden',
-                    border: '4px solid #80cbc4',
-                  }}
-                  animate={imgControls}
-                  transition={{ type: 'spring', stiffness: 350, damping: 16 }}
+                <motion.h4 
+                  style={{ fontFamily: 'Playfair Display, Merriweather, serif', fontWeight: 700, fontSize: '2.2rem', color: titleColor, margin: 0, marginBottom: '1.1rem', letterSpacing: '0.01em', wordBreak: 'break-word' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 + idx * 0.1 }}
                 >
-                  <img src={item.image} alt={item.title} style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '50%' }} />
-                </motion.div>
-
-                {/* Blog Content Box */}
-                <div
-                  className="advanced-blog-card glassmorphism"
-                  style={{
-                    marginTop: '80px',
-                     marginBottom: '1rem', // ✅ Add this line
-                      background: 'rgba(169, 236, 245, 0.75)',
-                    boxShadow: '0 8px 32px 0 rgba(0, 105, 92, 0.13)',
-                    backdropFilter: 'blur(14px)',
-                    WebkitBackdropFilter: 'blur(14px)',
-                    borderRadius: '28px',
-                    border: '2px solid #80cbc4',
-                    padding: '2.5rem 1.7rem 1.7rem 1.7rem',
-                    color: '#004d40',
-                    minHeight: '340px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    fontFamily: 'Inter, sans-serif',
-                  }}
+                  {item.title}
+                </motion.h4>
+                <motion.ul 
+                  style={{ paddingLeft: 0, margin: 0, color: textColor, fontSize: '1.08rem', lineHeight: 1.7, fontFamily: 'Inter, Lato, sans-serif', wordBreak: 'break-word' }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 + idx * 0.1 }}
                 >
-                  <h4 style={{ fontFamily: 'Merriweather, serif', fontWeight: 600, fontSize: '1.22rem', margin: '0 0 0.9rem', textAlign: 'center', color: '#00695c', letterSpacing: '0.01em' }}>{item.title}</h4>
-                  <ul style={{ paddingLeft: '1.2rem', margin: 0, textAlign: 'left', fontSize: '1.05rem', lineHeight: 1.8 }}>
-                    {item.points.slice(0, 2).map((pt, i) => (
-                      <li key={i}>{pt}</li>
+                  {item.points.map((pt, i) => (
+                    <motion.li 
+                      key={i} 
+                      style={{ marginBottom: '0.18rem', listStyle: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.5 + idx * 0.1 + i * 0.1 }}
+                    >
+                      <FaCheckCircle style={{ color: isDark ? '#fff' : '#4a2c2a', fontSize: '1.05em' }} />
+                      <span>{pt}</span>
+                    </motion.li>
                     ))}
-                  </ul>
+                </motion.ul>
                   <motion.p
-                    style={{ fontStyle: 'italic', fontSize: '1.01rem', marginTop: '1.3rem', color: '#00796b', textAlign: 'center' }}
+                  style={{ fontStyle: 'italic', fontSize: '1.08rem', marginTop: 'auto', color: isDark ? '#e6e7e2' : '#4a2c2a', textAlign: 'left', opacity: 0.88, letterSpacing: '0.01em', marginBottom: 0, wordBreak: 'break-word' }}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.3 + idx * 0.1 }}
+                  transition={{ duration: 0.7, delay: 0.6 + idx * 0.1 }}
                   >
                     {item.tip}
                   </motion.p>
-                </div>
-              </motion.div>
+            </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </motion.section>
+      <style>{`
+        @media (max-width: 1400px) {
+          .deck-blog-grid {
+            max-width: 99vw;
+          }
+        }
+        @media (max-width: 1200px) {
+          .deck-blog-grid {
+            max-width: 98vw;
+          }
+        }
+        @media (max-width: 900px) {
+          .deck-blog-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        @media (max-width: 600px) {
+          .deck-blog-grid {
+            grid-template-columns: 1fr;
+            padding: 0 0.5rem;
+          }
+        }
+        .deck-blog-card { z-index: 0; overflow: visible; }
+        .deck-blog-card:hover { z-index: 3; }
+      `}</style>
     </>
   );
 }

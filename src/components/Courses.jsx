@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import bgImage from '../assets/img/course.avif'; // adjust path based on your file
 import { useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
 
 const courses = [
   {
@@ -143,15 +142,20 @@ const gridImageVariant = {
 };
 
 function Courses() {
+  useEffect(() => {
+    const prev = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = '#fefcff';
+    return () => { document.body.style.backgroundColor = prev; };
+  }, []);
   return (
-    <>
+    <div style={{ background: '#fefcff', minHeight: '100vh', width: '100vw' }}>
       {/* Hero Section Animation */}
-      <section className="hero text-center" style={{ padding: '4rem 1rem', backgroundColor: '#f0f8ff' }}>
+      <section className="hero text-center" style={{ padding: '4rem 1rem', backgroundColor: '#f2ebe2' }}>
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1rem' }}
+          style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '2.5rem' }}
         >
           Your Future Begins with Skill
         </motion.h2>
@@ -165,28 +169,34 @@ function Courses() {
         </motion.p>
       </section>
 
-      <section id="courses-section" style={{ position: 'relative', padding: '4rem 1rem', background: '#fff', borderRadius: '24px', boxShadow: '0 8px 32px rgba(93,211,198,0.07)', maxWidth: '1200px', margin: '3rem auto' }}>
+      <section id="courses-section" style={{ position: 'relative', padding: '1.5rem 1rem', background: '#fefcff', borderRadius: '0', boxShadow: 'none', maxWidth: '100vw', margin: '0', minHeight: '100vh' }}>
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '2.5rem', color: '#003d4d', fontWeight: 'bold', fontSize: '2.7rem', letterSpacing: '0.01em', lineHeight: 1.1, position: 'relative' }}>
+          <h2 style={{ textAlign: 'center', marginBottom: '1.2rem', color: '#003d4d', fontWeight: 'bold', fontSize: '2.2rem', letterSpacing: '0.01em', lineHeight: 1.1, position: 'relative' }}>
             Top Career Courses
             <span style={{
               display: 'block',
               width: '60px',
               height: '4px',
               background: 'linear-gradient(90deg, #5dd3c6 0%, #278da0 100%)',
-              margin: '18px auto 0 auto',
+              margin: '12px auto 0 auto',
               borderRadius: '2px',
               opacity: 0.18
             }}></span>
           </h2>
           {courses.map((block, blockIdx) => (
-            <div key={block.category} style={{ marginBottom: '2.5rem' }}>
-              <h3 style={{ color: '#339da9', marginBottom: '1.2rem', fontWeight: 700, fontSize: '1.25rem', letterSpacing: '0.01em', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{block.category}</h3>
+            <div key={block.category} style={{
+              marginBottom: '1.5rem',
+              padding: '1.5rem 1rem',
+              maxWidth: '100%',
+              width: '100%',
+              transition: 'box-shadow 0.3s, background 0.3s',
+            }}>
+              <h3 style={{ color: '#339da9', marginBottom: '0.8rem', fontWeight: 700, fontSize: '1.13rem', letterSpacing: '0.01em', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{block.category}</h3>
               <div
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))',
-                  gap: '2.2rem',
+                  gap: '1.2rem',
                   justifyItems: 'center',
                   alignItems: 'stretch',
                   background: 'none',
@@ -302,9 +312,14 @@ function Courses() {
                         style={{ width: '100%', textAlign: 'center', zIndex: 2 }}
                   >
                         <h4 style={{ color: '#003d4d', marginBottom: '1rem', textAlign: 'center', fontWeight: 700, fontSize: '1.13rem', letterSpacing: '0.01em' }}>{course.title}</h4>
-                        <ul style={{ paddingLeft: '1.2rem', textAlign: 'left', margin: 0, color: '#444', fontSize: '1rem', lineHeight: 1.6 }}>
+                        <ul style={{ paddingLeft: 0, textAlign: 'left', margin: 0, color: '#444', fontSize: '1rem', lineHeight: 1.6 }}>
                       {course.description.map((point, pIdx) => (
-                        <li key={pIdx} style={{ marginBottom: '0.5rem' }}>{point}</li>
+                            <li key={pIdx} style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.7em', lineHeight: '1.6' }}>
+                              <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '1.5em', height: '1.5em', color: '#32bdac' }}>
+                                <i className="fa-solid fa-circle-check" style={{ color: '#32bdac', fontSize: '1em', lineHeight: '1.6' }}></i>
+                              </span>
+                              <span style={{ lineHeight: '1.6' }}>{point}</span>
+                            </li>
                       ))}
                     </ul>
                   </motion.div>
@@ -319,28 +334,28 @@ function Courses() {
         {/* Why Choose Section - Modern Reference Inspired */}
         <section style={{
           background: '#1bb6a3',
-          padding: '1.1rem 0 1.1rem 0',
+          padding: '1.1rem 0',
           margin: '0',
           width: '100vw',
-          position: 'relative',
+            position: 'relative',
           left: '50%',
           right: '50%',
           marginLeft: '-50vw',
           marginRight: '-50vw',
         }}>
-          <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2.5vw' }}>
-            <h2 style={{ color: '#fff', textAlign: 'center', fontWeight: 'bold', fontSize: '2.1rem', marginBottom: '0.3rem', letterSpacing: '0.01em' }}>
+          <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 1rem' }}>
+            <h2 style={{ color: '#fff', textAlign: 'center', fontWeight: 'bold', fontSize: '1.5rem', marginBottom: '0.3rem', letterSpacing: '0.01em' }}>
               Why Choose Iyanthiran Edge?
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.85)', textAlign: 'center', fontSize: '1rem', marginBottom: '1.3rem', fontWeight: 400 }}>
+            <p style={{ color: '#444', textAlign: 'center', fontSize: '1rem', marginBottom: '1rem', fontWeight: 400 }}>
               Empowering Your Career Journey
             </p>
             <div style={{
               display: 'flex',
               flexWrap: 'wrap',
               justifyContent: 'space-between',
-              gap: '2.2rem',
-              margin: '0 auto 1.2rem auto',
+              gap: '1.2rem',
+              margin: '0 auto 1rem auto',
               width: '100%',
             }}>
               {/* Feature 1 */}
@@ -420,15 +435,15 @@ function Courses() {
               >
                 <i className="fa-solid fa-user-check" style={{ color: '#fff', fontSize: '2.1rem', marginBottom: '0.3rem' }}></i>
                 <div style={{ fontWeight: 700, color: '#fff', fontSize: '1.08rem' }}>100% Placement Support</div>
-              </motion.div>
+        </motion.div>
             </div>
             {/* CTA Box */}
             <div style={{
               background: '#fff',
               borderRadius: '18px',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
-              padding: '2.2rem 2.1rem 1.5rem 2.1rem',
-              margin: '3.5rem auto 0 auto',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+              padding: '1.2rem 1rem',
+              margin: '1.5rem auto 0 auto',
               maxWidth: '480px',
               textAlign: 'center',
               display: 'flex',
@@ -452,7 +467,7 @@ function Courses() {
                   fontSize: '1.08rem',
                   boxShadow: '0 2px 8px rgba(93,211,198,0.13)',
                   transition: 'background 0.2s',
-                }}
+            }}
           >
             Visit www.iyanthiran.com
           </a>
@@ -468,7 +483,7 @@ function Courses() {
           }
         `}
       </style>
-    </>
+    </div>
   );
 }
 

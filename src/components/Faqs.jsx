@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
+import { FaUserShield, FaRegSmile, FaRegClock, FaRegQuestionCircle, FaRegEdit, FaExchangeAlt, FaChalkboardTeacher, FaUniversity, FaMapMarkerAlt, FaPhoneAlt, FaEnvelopeOpenText } from 'react-icons/fa';
+import { FaCircle } from 'react-icons/fa';
+import { AnimatePresence } from 'framer-motion';
 
 function FAQSection() {
   const [activeIndices, setActiveIndices] = useState([]);
@@ -116,6 +119,30 @@ function FAQSection() {
     }
   ];
 
+  // Unique, relevant icon mapping for each FAQ
+  const faqIcons = [
+    <FaUserShield size={24} color="#32bdac" />, // Trust & Security
+    <FaRegSmile size={24} color="#32bdac" />,   // Free trial
+    <FaRegClock size={24} color="#32bdac" />,   // Trial duration
+    <FaExchangeAlt size={24} color="#32bdac" />, // Export/stop using
+    <FaRegEdit size={24} color="#32bdac" />,    // Change plan
+    <FaChalkboardTeacher size={24} color="#32bdac" />, // Interview prep
+    <FaUniversity size={24} color="#32bdac" />, // Placement support
+    <FaEnvelopeOpenText size={24} color="#32bdac" />, // Collaboration
+    <FaMapMarkerAlt size={24} color="#32bdac" />, // Location
+    <FaPhoneAlt size={24} color="#32bdac" />     // Contact
+  ];
+
+  // Multi-expand: allow multiple open
+  const [openIndices, setOpenIndices] = useState([]);
+  const handleAccordion = (index) => {
+    setOpenIndices((prev) =>
+      prev.includes(index)
+        ? prev.filter((i) => i !== index)
+        : [...prev, index]
+    );
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -169,7 +196,8 @@ function FAQSection() {
           margin: '0 auto',
           padding: '1rem',
           borderRadius: '12px',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
+          boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+          background: '#f7fafc',
         }}
       >
         {faqData.map((faq, index) => (
@@ -180,67 +208,93 @@ function FAQSection() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             viewport={{ once: true }}
             style={{
-              marginBottom: '1rem',
-              borderRadius: '8px',
+              marginBottom: '2rem',
+              borderRadius: '14px',
               overflow: 'hidden',
-              border: 'none',
-              backgroundColor: '#fff',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-              textAlign: 'justify'
+              border: '1px solid #e6e6e6',
+              backgroundColor: '#fcfcfd',
+              boxShadow: openIndices.includes(index)
+                ? '0 8px 32px rgba(0,0,0,0.18)'
+                : '0 2px 8px rgba(0,0,0,0.10)',
+              textAlign: 'justify',
+              transition: 'box-shadow 0.2s, border 0.2s',
+              position: 'relative',
             }}
+            whileHover={{ boxShadow: '0 8px 32px rgba(0,0,0,0.22)', borderColor: '#b2f0e9' }}
           >
             <button
-              onClick={() => toggleFAQ(index)}
+              onClick={() => handleAccordion(index)}
               style={{
                 width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
                 textAlign: 'left',
-                padding: '1rem',
-                background: '#c9f7f6',
+                padding: '1.25rem 1.5rem',
+                background: openIndices.includes(index) ? '#f6fffd' : 'none',
                 color: '#003d4d',
                 border: 'none',
-                fontWeight: 'bold',
-                fontSize: '1rem',
+                fontWeight: 600,
+                fontSize: '1.08rem',
                 cursor: 'pointer',
-                height: '5rem'
+                outline: 'none',
+                transition: 'background 0.2s',
+                gap: '1rem',
+                borderBottom: openIndices.includes(index) ? '1px solid #32bdac' : '1px solid #f2f2f2',
               }}
+              aria-expanded={openIndices.includes(index)}
             >
-              {faq.question}
-              <span style={{ float: 'right' }}>⮟</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <span style={{ minWidth: 32, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  {faqIcons[index % faqIcons.length]}
+                </span>
+                {faq.question}
+              </span>
+              <span style={{
+                transform: openIndices.includes(index) ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.3s',
+                fontSize: '1.5rem',
+                color: '#32bdac',
+                marginLeft: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+              }}>
+                ▼
+              </span>
             </button>
-            <div
-              style={{
-                maxHeight: activeIndices.includes(index) ? '500px' : '0px',
-                opacity: activeIndices.includes(index) ? 1 : 0,
-                padding: activeIndices.includes(index) ? '1rem' : '0 1rem',
-                overflow: 'hidden',
-                transition: 'all 0.4s ease'
-              }}
-            >
-              <ul style={{ paddingLeft: '1.25rem', margin: 0, }}>
-                {activeIndices.includes(index) && showAnswer[index] && (
-                  <Typewriter
-                    onInit={(typewriter) => {
-                      typewriter
-                        .typeString(
-                              `<ul style="padding-left: 1.2rem;  margin: 0; list-style: none;">
-                                ${faq.answer.map(point => `<li>➤ ${point}</li>`).join('')}
-                              </ul>`
-                            )
-
-                           .start();
-                          }}
-                          options={{
-                            delay: 1,
-                            autoStart: true,
-                            loop: false,
-                            html: true,
-                            cursor: '',
-                          }}
-                        />
-
-                )}
-              </ul>
-            </div>
+            <AnimatePresence initial={false}>
+              {openIndices.includes(index) && (
+                <motion.div
+                  key="answer"
+                  layout
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ opacity: { duration: 0.25 } }}
+                  style={{
+                    overflow: 'hidden',
+                    background: '#fcfcfc',
+                    fontSize: '1rem',
+                    color: '#222',
+                  }}
+                >
+                  <motion.ul
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ delay: 0.08, duration: 0.3 }}
+                    style={{ padding: '1rem 2.5rem 1.5rem 4.5rem', margin: 0, listStyle: 'none' }}
+                  >
+                    {faq.answer.map((point, i) => (
+                      <li key={i} style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                        <FaCircle size={8} color="#32bdac" style={{ marginTop: '0.4em', flexShrink: 0 }} />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </motion.ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         ))}
       </section>
